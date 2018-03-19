@@ -8,3 +8,10 @@ func Loop(n int) {
 	}
 	fmt.Println("looping finished")
 }
+
+func dirtyFunc() {
+	fmt.Println("should be formatted by goimports")
+	
+	
+	
+}
