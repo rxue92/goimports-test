@@ -1,0 +1,219 @@
+Microsoft Windows [版本 10.0.16299.192]
+(c) 2017 Microsoft Corporation。保留所有权利。
+
+
+D:\godev\src\github.com\rxue92\goimports-test>git fetch
+
+D:\godev\src\github.com\rxue92\goimports-test>git status
+On branch master
+nothing to commit, working tree clean
+
+D:\godev\src\github.com\rxue92\goimports-test>git log
+commit 29a83a621ee32445f35c9c40dfb21c97e800e5ce
+Author: rxue <x****@****>
+Date:   Fri Mar 16 17:58:47 2018 +0800
+
+    init commit
+
+
+# 初始推送
+D:\godev\src\github.com\rxue92\goimports-test>git push -u origin master
+fatal: HttpRequestException encountered.
+   发送请求时出错。
+
+未经处理的异常:  System.ObjectDisposedException: 无法访问已关闭的文件。
+   在 System.IO.__Error.FileNotOpen()
+   在 System.IO.FileStream.Flush(Boolean flushToDisk)
+   在 System.IO.StreamWriter.Flush(Boolean flushStream, Boolean flushEncoder)
+   在 Microsoft.Alm.Git.Trace.Microsoft.Alm.Git.ITrace.Flush()
+   在 Microsoft.Alm.Cli.Program.Die(String message)
+   在 Microsoft.Alm.Cli.Program.Die(Exception exception)
+   在 Microsoft.Alm.Cli.Program.Main(String[] args)
+Username for 'https://github.com': rxue92
+Password for 'https://rxue92@github.com':
+Counting objects: 4, done.
+Delta compression using up to 8 threads.
+Compressing objects: 100% (3/3), done.
+Writing objects: 100% (4/4), 307 bytes | 0 bytes/s, done.
+Total 4 (delta 0), reused 0 (delta 0)
+To https://github.com/rxue92/goimports-test.git
+ * [new branch]      master -> master
+Branch master set up to track remote branch master from origin.
+
+
+
+# 在master分支增加文件
+D:\godev\src\github.com\rxue92\goimports-test>git add .
+warning: LF will be replaced by CRLF in functions/test_funcs.go.
+The file will have its original line endings in your working directory.
+warning: LF will be replaced by CRLF in main.go.
+The file will have its original line endings in your working directory.
+
+D:\godev\src\github.com\rxue92\goimports-test>git commit -m "add test go files"
+[master 758aba5] add test go files
+ 2 files changed, 23 insertions(+)
+ create mode 100644 functions/test_funcs.go
+ create mode 100644 main.go
+
+
+# 替换remote
+D:\godev\src\github.com\rxue92\goimports-test>git remote -v
+origin  https://github.com/rxue92/goimports-test.git (fetch)
+origin  https://github.com/rxue92/goimports-test.git (push)
+
+D:\godev\src\github.com\rxue92\goimports-test>git remote remove origin
+
+D:\godev\src\github.com\rxue92\goimports-test>git remote add origin git@github.com:rxue92/goimports-test.git
+
+D:\godev\src\github.com\rxue92\goimports-test>git remote -v
+origin  git@github.com:rxue92/goimports-test.git (fetch)
+origin  git@github.com:rxue92/goimports-test.git (push)
+
+D:\godev\src\github.com\rxue92\goimports-test>git push origin master
+Warning: Permanently added the RSA host key for IP address '192.30.253.112' to the list of known hosts.
+Counting objects: 5, done.
+Delta compression using up to 8 threads.
+Compressing objects: 100% (4/4), done.
+Writing objects: 100% (5/5), 690 bytes | 0 bytes/s, done.
+Total 5 (delta 0), reused 0 (delta 0)
+To github.com:rxue92/goimports-test.git
+   29a83a6..758aba5  master -> master
+
+
+# 新建分支develop
+D:\godev\src\github.com\rxue92\goimports-test>git branch develop
+
+D:\godev\src\github.com\rxue92\goimports-test>git checkout develop
+Switched to branch 'develop'
+
+D:\godev\src\github.com\rxue92\goimports-test>git status
+On branch develop
+nothing to commit, working tree clean
+
+
+# 在develop分支修改文件
+D:\godev\src\github.com\rxue92\goimports-test>git add .
+warning: LF will be replaced by CRLF in functions/test_funcs.go.
+The file will have its original line endings in your working directory.
+
+D:\godev\src\github.com\rxue92\goimports-test>git commit -m "add new log"
+[develop 716cfd9] add new log
+ 1 file changed, 1 insertion(+)
+
+D:\godev\src\github.com\rxue92\goimports-test>git push origin develop
+Warning: Permanently added the RSA host key for IP address '192.30.253.113' to the list of known hosts.
+Counting objects: 4, done.
+Delta compression using up to 8 threads.
+Compressing objects: 100% (3/3), done.
+Writing objects: 100% (4/4), 362 bytes | 0 bytes/s, done.
+Total 4 (delta 2), reused 0 (delta 0)
+remote: Resolving deltas: 100% (2/2), completed with 2 local objects.
+To github.com:rxue92/goimports-test.git
+ * [new branch]      develop -> develop
+
+
+
+
+
+# 在github网页界面修改develop分支代码
+
+D:\godev\src\github.com\rxue92\goimports-test>git fetch
+Warning: Permanently added the RSA host key for IP address '52.74.223.119' to the list of known hosts.
+remote: Counting objects: 4, done.
+remote: Compressing objects: 100% (3/3), done.
+remote: Total 4 (delta 2), reused 0 (delta 0), pack-reused 0
+Unpacking objects: 100% (4/4), done.
+From github.com:rxue92/goimports-test
+   716cfd9..8b646b0  develop    -> origin/develop
+
+D:\godev\src\github.com\rxue92\goimports-test>git pull origin develop
+Warning: Permanently added the RSA host key for IP address '13.229.188.59' to the list of known hosts.
+From github.com:rxue92/goimports-test
+ * branch            develop    -> FETCH_HEAD
+Updating 716cfd9..8b646b0
+Fast-forward
+ functions/test_funcs.go | 7 +++++++
+ 1 file changed, 7 insertions(+)
+
+
+
+# 用goimports修改代码
+D:\godev\src\github.com\rxue92\goimports-test>git commit -a -m "goimports"
+warning: LF will be replaced by CRLF in functions/test_funcs.go.
+The file will have its original line endings in your working directory.
+[develop a30bc08] goimports
+ 1 file changed, 3 deletions(-)
+
+
+
+# 切换到master分支（切换后关闭terminal面板），此时goland中test_funcs.go文件是蓝色的
+D:\godev\src\github.com\rxue92\goimports-test>git checkout master
+Switched to branch 'master'
+
+# 通过git status命令和git diff --check命令可以看出是由于line break导致的
+D:\godev\src\github.com\rxue92\goimports-test>git status
+On branch master
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git checkout -- <file>..." to discard changes in working directory)
+
+        modified:   functions/test_funcs.go
+
+no changes added to commit (use "git add" and/or "git commit -a")
+
+D:\godev\src\github.com\rxue92\goimports-test>git diff --check
+warning: LF will be replaced by CRLF in functions/test_funcs.go.
+The file will have its original line endings in your working directory.
+
+# 运行git add后蓝字消失，可以切换分支
+D:\godev\src\github.com\rxue92\goimports-test>git add .
+warning: LF will be replaced by CRLF in functions/test_funcs.go.
+The file will have its original line endings in your working directory.
+
+D:\godev\src\github.com\rxue92\goimports-test>git checkout develop
+Switched to branch 'develop'
+
+
+# 切换后仍有蓝字，尽管develop分支上没有任何更新
+D:\godev\src\github.com\rxue92\goimports-test>git status
+On branch develop
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git checkout -- <file>..." to discard changes in working directory)
+
+        modified:   functions/test_funcs.go
+
+no changes added to commit (use "git add" and/or "git commit -a")
+
+D:\godev\src\github.com\rxue92\goimports-test>git diff --check
+warning: LF will be replaced by CRLF in functions/test_funcs.go.
+The file will have its original line endings in your working directory.
+
+# 推送之前commit的修改
+D:\godev\src\github.com\rxue92\goimports-test>git push origin develop
+Counting objects: 4, done.
+Delta compression using up to 8 threads.
+Compressing objects: 100% (3/3), done.
+Writing objects: 100% (4/4), 328 bytes | 0 bytes/s, done.
+Total 4 (delta 2), reused 0 (delta 0)
+remote: Resolving deltas: 100% (2/2), completed with 2 local objects.
+To github.com:rxue92/goimports-test.git
+   8b646b0..a30bc08  develop -> develop
+
+# 使用git add，蓝字消失
+D:\godev\src\github.com\rxue92\goimports-test>git add .
+warning: LF will be replaced by CRLF in functions/test_funcs.go.
+The file will have its original line endings in your working directory.
+
+# 实际上并不能commit
+D:\godev\src\github.com\rxue92\goimports-test>git commit -m "convert line break"
+On branch develop
+nothing to commit, working tree clean
+
+# git diff找不出区别
+D:\godev\src\github.com\rxue92\goimports-test>git diff --check
+
+D:\godev\src\github.com\rxue92\goimports-test>git status
+On branch develop
+nothing to commit, working tree clean
+
