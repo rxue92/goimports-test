@@ -11,7 +11,4 @@ func Loop(n int) {
 
 func dirtyFunc() {
 	fmt.Println("should be formatted by goimports")
-	
-	
-	
 }
