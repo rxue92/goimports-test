@@ -8,7 +8,6 @@ import (
 	"github.com/rxue92/goimports-test/functions"
 )
 
-// new comment line
 func main() {
 	fmt.Println("Hello, 世界", "!")
 	functions.Loop(5)
